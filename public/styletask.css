@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    color: #00d9ff;
+    text-align: center;
+}
+
+#taskForm {
+    background: #111;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border: 2px solid #555;
+    box-sizing: border-box;
+    max-width: 500px;
+    margin: 0 auto 20px;  
+}
+
+input, textarea, button, select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input, textarea {
+    background: #222;
+    color: #fff;
+}
+
+select {
+    background: #222;
+    color: #fff;
+    border: 1px solid #00d9ff;
+    font-size: 18px;
+}
+
+select option {
+    background: #111;
+    color: #fff;
+}
+
+select:hover {
+    border-color: #00b3cc;
+}
+
+button {
+    background: #00d9ff;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    width: 50%; 
+    margin: 10px auto;
+    display: block; 
+}
+
+button:hover {
+    background: #008bb5;
+}
+
+.task {
+    background: #111;
+    border-left: 5px solid #00d9ff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.task h3 {
+    margin: 0;
+    color: #00d9ff;
+}
+
+.task button {
+    background: red;
+    color: white;
+    padding: 15px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.task button:hover {
+    background: darkred;
+}
+
+
+#taskList {
+    margin-top: 30px; 
+}

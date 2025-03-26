@@ -1,0 +1,116 @@
+[
+    {
+      "titre": "Finaliser le rapport",
+      "description": "Rédiger et relire le rapport final pour le client.",
+      "dateCreation": { "$date": "2024-03-20T10:00:00Z" },
+      "echeance": { "$date": "2024-03-30T18:00:00Z" },
+      "statut": "en cours",
+      "priorite": "haute",
+      "auteur": {
+        "nom": "Dupont",
+        "prenom": "Jean",
+        "email": "jean.dupont@example.com"
+      },
+      "categorie": "travail",
+      "etiquettes": ["rapport", "urgent"],
+      "sousTaches": [
+        {
+          "titre": "Rédaction",
+          "statut": "terminée",
+          "echeance": { "$date": "2024-03-25T12:00:00Z" }
+        },
+        {
+          "titre": "Relecture",
+          "statut": "en cours",
+          "echeance": { "$date": "2024-03-28T15:00:00Z" }
+        }
+      ],
+      "commentaires": [
+        {
+          "auteur": "Alice Martin",
+          "date": { "$date": "2024-03-21T14:30:00Z" },
+          "contenu": "Attention aux fautes dans le résumé."
+        }
+      ],
+      "historiqueModifications": [
+        {
+          "champModifie": "statut",
+          "ancienneValeur": "à faire",
+          "nouvelleValeur": "en cours",
+          "date": { "$date": "2024-03-22T09:00:00Z" }
+        }
+      ]
+    },
+    {
+      "titre": "Organiser une réunion d'équipe",
+      "description": "Planifier une réunion pour discuter des prochains objectifs.",
+      "dateCreation": { "$date": "2024-03-22T09:30:00Z" },
+      "echeance": { "$date": "2024-03-27T10:00:00Z" },
+      "statut": "à faire",
+      "priorite": "moyenne",
+      "auteur": {
+        "nom": "Lemoine",
+        "prenom": "Sophie",
+        "email": "sophie.lemoine@example.com"
+      },
+      "categorie": "travail",
+      "etiquettes": ["réunion", "équipe"],
+      "sousTaches": [
+        {
+          "titre": "Fixer la date",
+          "statut": "terminée",
+          "echeance": { "$date": "2024-03-24T12:00:00Z" }
+        },
+        {
+          "titre": "Envoyer les invitations",
+          "statut": "à faire",
+          "echeance": { "$date": "2024-03-25T14:00:00Z" }
+        }
+      ],
+      "commentaires": [],
+      "historiqueModifications": []
+    },
+    {
+      "titre": "Acheter un cadeau d'anniversaire",
+      "description": "Trouver un cadeau pour l'anniversaire de Paul.",
+      "dateCreation": { "$date": "2024-03-18T15:00:00Z" },
+      "echeance": { "$date": "2024-03-26T20:00:00Z" },
+      "statut": "à faire",
+      "priorite": "critique",
+      "auteur": {
+        "nom": "Bernard",
+        "prenom": "Lucas",
+        "email": "lucas.bernard@example.com"
+      },
+      "categorie": "perso",
+      "etiquettes": ["cadeau", "anniversaire"],
+      "sousTaches": [
+        {
+          "titre": "Choisir le cadeau",
+          "statut": "en cours",
+          "echeance": { "$date": "2024-03-24T18:00:00Z" }
+        },
+        {
+          "titre": "Acheter le cadeau",
+          "statut": "à faire",
+          "echeance": { "$date": "2024-03-25T19:00:00Z" }
+        }
+      ],
+      "commentaires": [
+        {
+          "auteur": "Emma Leroy",
+          "date": { "$date": "2024-03-19T10:00:00Z" },
+          "contenu": "Paul aime les montres, ça peut être une bonne idée."
+        }
+      ],
+      "historiqueModifications": [
+        {
+          "champModifie": "priorite",
+          "ancienneValeur": "haute",
+          "nouvelleValeur": "critique",
+          "date": { "$date": "2024-03-20T11:00:00Z" }
+        }
+      ]
+    }
+  ]
+  
