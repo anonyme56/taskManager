@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier la Tâche</title>
+    <link rel="stylesheet" href="/css/styletask.css">
+</head>
+<body>
+    <h1>Modifier la Tâche</h1>
+    <form id="editTaskForm">
+        <input type="text" id="editTitre" placeholder="Titre" required>
+        <textarea id="editDescription" placeholder="Description"></textarea>
+        <input type="datetime-local" id="editEcheance">
+
+        <select id="editStatut">
+            <option value="à faire">À faire</option>
+            <option value="en cours">En cours</option>
+            <option value="terminée">Terminée</option>
+            <option value="annulée">Annulée</option>
+        </select>
+
+        <select id="editPriorite">
+            <option value="basse">Basse</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="haute">Haute</option>
+            <option value="critique">Critique</option>
+        </select>
+
+        <input type="text" id="editCategorie" placeholder="Catégorie">
+        <input type="text" id="editEtiquettes" placeholder="Étiquettes (séparées par des virgules)">
+
+        <button type="submit">Enregistrer</button>
+        
+    </form>
+
+    <div id="commentSection">
+        <h2>Commentaires</h2>
+        <div id="commentList"></div>
+
+        <h3>Ajouter un Commentaire</h3>
+        <form id="addCommentForm">
+            <input type="text" id="commentAuteur" placeholder="Votre nom" required>
+            <textarea id="commentContent" placeholder="Votre commentaire" required></textarea>
+            <button type="submit">Ajouter le Commentaire</button>
+        </form>
+    </div>
+
+    <script src="js/modification.js"></script>
+</body>
+</html>

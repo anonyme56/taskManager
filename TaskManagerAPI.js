@@ -6,6 +6,20 @@ const app = express();
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));  
+});
+
+app.get('/modify/:id', async (req, res) => {
+    const task = await Task.findById(req.params.id);
+    if (!task) {
+        return res.status(404).send('Tâche non trouvée');
+    }
+    res.sendFile(path.join(__dirname, 'public', 'modification.html'));  
+});
+
 // Connexion à MongoDB
 mongoose.connect('mongodb://localhost:27017/taskmanager')
   .then(() => console.log('MongoDB connecté'))
@@ -47,9 +61,7 @@ const TacheSchema = new mongoose.Schema({
 const Task = mongoose.model('Task', TacheSchema);
 
 // Route pour servir le fichier index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));  // Assure-toi que le fichier index.html est bien dans le même répertoire
-});
+
 
 // Routes API
 app.get('/tasks', async (req, res) => {
@@ -69,14 +81,59 @@ app.post('/tasks', async (req, res) => {
 });
 
 app.put('/tasks/:id', async (req, res) => {
-    const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updatedTask);
+    const { id } = req.params;
+    const updatedTask = req.body;
+
+    try {
+        await Task.findByIdAndUpdate(id, updatedTask);
+        res.json({ message: "Tâche mise à jour avec succès !" });
+    } catch (error) {
+        res.status(500).json({ error: "Erreur lors de la mise à jour de la tâche" });
+    }
 });
+
 
 app.delete('/tasks/:id', async (req, res) => {
     await Task.findByIdAndDelete(req.params.id);
     res.status(204).send();
 });
+
+app.post('/tasks/:id/comments', async (req, res) => {
+    const task = await Task.findById(req.params.id);
+    if (!task) {
+        return res.status(404).send('Tâche non trouvée');
+    }
+
+    const newComment = {
+        auteur: req.body.auteur,
+        contenu: req.body.contenu,
+        date: new Date(),
+    };
+
+    task.commentaires.push(newComment);
+    await task.save();
+    res.status(201).json(newComment);
+});
+
+app.delete('/tasks/:taskId/comments/:commentId', async (req, res) => {
+    const { taskId, commentId } = req.params;
+
+    try {
+        const task = await Task.findById(taskId);
+        if (!task) {
+            return res.status(404).json({ error: "Tâche non trouvée" });
+        }
+
+        // Filtrer pour supprimer le commentaire
+        task.commentaires = task.commentaires.filter(comment => comment._id.toString() !== commentId);
+        
+        await task.save();
+        res.status(200).json({ message: "Commentaire supprimé avec succès" });
+    } catch (error) {
+        res.status(500).json({ error: "Erreur lors de la suppression du commentaire" });
+    }
+});
+
 
 // Lancer le serveur
 const PORT = 5000;

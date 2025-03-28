@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire de Tâches</title>
+    <link rel="stylesheet" href="css/styletask.css">
+</head>
+<body>
+    <h1>Gestionnaire de Tâches</h1>
+    <form id="taskForm">
+        <input type="text" id="titre" placeholder="Titre" required>
+        <textarea id="description" placeholder="Description"></textarea>
+        <input type="datetime-local" id="echeance" placeholder="Date limite de la tâche">
+        
+        <select id="statut">
+            <option value="à faire">À faire</option>
+            <option value="en cours">En cours</option>
+            <option value="terminée">Terminée</option>
+            <option value="annulée">Annulée</option>
+        </select>
+        
+        <select id="priorite">
+            <option value="basse">Basse</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="haute">Haute</option>
+            <option value="critique">Critique</option>
+        </select>
+        
+        <input type="text" id="auteurNom" placeholder="Nom de l'auteur" required>
+        <input type="text" id="auteurPrenom" placeholder="Prénom de l'auteur" required>
+        <input type="email" id="auteurEmail" placeholder="Email de l'auteur" required>
+        
+        <input type="text" id="categorie" placeholder="Catégorie (ex: perso, travail, projet)">
+        
+        <input type="text" id="etiquettes" placeholder="Étiquettes (séparées par des virgules)">
+        <button type="submit">Ajouter</button>
+    </form>
+    <div id="taskList"></div>
+    <script src="js/app.js"></script>
+   
+
+</body>
+</html>

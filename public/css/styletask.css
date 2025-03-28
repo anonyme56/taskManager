@@ -1,0 +1,219 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    color: #00d9ff;
+    text-align: center;
+}
+
+#taskForm {
+    background: #111;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border: 2px solid #555;
+    box-sizing: border-box;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+#editTaskForm {
+    background: #111;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border: 2px solid #555;
+    box-sizing: border-box;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+input, textarea, button, select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input, textarea {
+    background: #222;
+    color: #fff;
+}
+
+select {
+    background: #222;
+    color: #fff;
+    border: 1px solid #00d9ff;
+    font-size: 18px;
+}
+
+select option {
+    background: #111;
+    color: #fff;
+}
+
+select:hover {
+    border-color: #00b3cc;
+}
+
+button {
+    background: #00d9ff; 
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    width: 50%; 
+    margin: 10px auto;
+    display: block;
+}
+
+button:hover {
+    background: #008bb5; 
+}
+
+button#editButton {
+    background: #00d9ff; 
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px; 
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;  /* Ajuste la largeur du bouton */
+}
+
+button#editButton:hover {
+    background: #008bb5; 
+}
+
+.task {
+    background: #111;
+    border-left: 5px solid #00d9ff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.task h3 {
+    margin: 0;
+    color: #00d9ff;
+}
+
+
+.task-buttons {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 0; 
+    width: auto;
+    margin-top: 10px;
+}
+
+button#editButton, button#deleteButton {
+    padding: 10px 20px;
+    margin: 0; 
+    width: auto; 
+}
+
+button#editButton:hover {
+    background: #008bb5; 
+}
+
+button#deleteButton {
+    background: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#deleteButton:hover {
+    background: darkred;
+}
+
+#taskList {
+    margin-top: 30px;
+}
+
+#commentSection {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#commentList .comment {
+    display: flex;             
+    justify-content: space-between; 
+    align-items: center;      
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+#commentList .comment:last-child {
+    border-bottom: none;
+}
+
+.delete-btn {
+    background-color: rgb(123, 0, 0);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;          
+    width: 30px;               
+    align-self: flex-end;      
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.comment {
+   
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex; /* Utiliser Flexbox pour aligner les éléments */
+    flex-direction: column; /* Organiser les éléments de manière verticale */
+    position: relative; /* Pour faciliter le placement du bouton à droite */
+    overflow: hidden;
+}
+
+
+.content-comment {
+    padding: 10px 15px;
+    background-color: #222;
+    border-radius: 5px;
+    color: #ddd;
+    margin-top: 5px;
+    flex-grow: 1;
+    overflow-wrap: break-word; 
+    word-wrap: break-word; 
+    white-space: normal; 
+    max-height: 200px; 
+    overflow-y: auto; 
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px; /* Ajouter un petit espace entre le contenu et le bouton */
+    margin-left: auto; /* Aligner le bouton à droite */
+    position: absolute; /* Utiliser la position absolue pour placer le bouton à droite */
+    top: 10px; /* Positionner le bouton par rapport à la zone de contenu */
+    right: 10px; /* Placer le bouton à droite du parent */
+}
