@@ -36,6 +36,35 @@
         <input type="text" id="etiquettes" placeholder="Étiquettes (séparées par des virgules)">
         <button type="submit">Ajouter</button>
     </form>
+    
+    <form id="filtersForm">
+        
+    
+        <label for="tri">Trier par :</label>
+        <select id="tri" name="tri">
+            <option value="">Aucun tri</option>
+            <option value="dateCreation">Date de création</option>
+            <option value="echeance">Date d'échéance</option>
+            <option value="priorite">Priorité</option>
+        </select>
+    
+        <label for="ordre">Ordre :</label>
+        <select id="ordre" name="ordre">
+            <option value="asc">Croissant</option>
+            <option value="desc">Décroissant</option>
+        </select>
+        
+       
+
+        <button type="submit">Appliquer les filtres</button>
+
+        <label for="searchQuery">Rechercher :</label>
+        <input type="text" id="searchQuery" placeholder="Rechercher...(titre,description,etiquettes,statut,priorite)">
+    </form>
+    
+    
+  
+    
     <div id="taskList"></div>
     <script src="js/app.js"></script>
    

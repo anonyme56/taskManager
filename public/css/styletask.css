@@ -142,6 +142,7 @@ button#deleteButton:hover {
 }
 
 #commentSection {
+    flex: 2;
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -159,32 +160,15 @@ button#deleteButton:hover {
     border-bottom: none;
 }
 
-.delete-btn {
-    background-color: rgb(123, 0, 0);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;          
-    width: 30px;               
-    align-self: flex-end;      
-}
-
-.delete-btn:hover {
-    background-color: darkred;
-}
-
 .comment {
    
     border: 1px solid #444;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
-    display: flex; /* Utiliser Flexbox pour aligner les éléments */
-    flex-direction: column; /* Organiser les éléments de manière verticale */
-    position: relative; /* Pour faciliter le placement du bouton à droite */
+    display: flex;
+    flex-direction: column; 
+    position: relative; 
     overflow: hidden;
 }
 
@@ -203,6 +187,25 @@ button#deleteButton:hover {
     overflow-y: auto; 
 }
 
+
+.delete-btn {
+    background-color: rgb(123, 0, 0);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;          
+    width: 30px;               
+    align-self: flex-end;      
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+
 .delete-btn {
     background-color: red;
     color: white;
@@ -211,9 +214,96 @@ button#deleteButton:hover {
     font-size: 12px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 10px; /* Ajouter un petit espace entre le contenu et le bouton */
-    margin-left: auto; /* Aligner le bouton à droite */
-    position: absolute; /* Utiliser la position absolue pour placer le bouton à droite */
-    top: 10px; /* Positionner le bouton par rapport à la zone de contenu */
-    right: 10px; /* Placer le bouton à droite du parent */
+    margin-top: 10px; 
+    margin-left: auto; 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
 }
+
+.subtask-container {
+    flex: 1;
+    background-color: #222;  
+    border-radius: 8px; 
+    padding: 12px;  
+    margin-top: 10px;
+    border: 2px solid #444;  
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);  
+    max-width: 600px;  
+    margin-left: auto;  
+    margin-right: auto;   
+    
+}
+
+.subtask {
+    background-color: #333;
+    border-left: 5px solid #007bff; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtask:nth-child(odd) {
+    background-color: #3d3d3d; 
+}
+
+.subtask-title {
+    font-weight: bold;
+    color: #00bfff; 
+    margin-right: 10px;
+}
+
+
+.subtask-status {
+    color: #ddd;
+    font-weight: normal;
+}
+
+.subtask-date {
+    margin-left: 15px;  
+    color: #bbb;
+}
+
+.delete-btn-subtask {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 2px 6px;
+    font-size: 12px;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.delete-btn-subtask:hover {
+    background-color: darkred;
+}
+
+.btn-ajouter {
+    width: auto; 
+    padding: 12px 20px; 
+    margin: 20px auto;  
+    display: block;  
+    text-align: center; 
+    background-color: #00d9ff; 
+    color: #000; 
+    border-radius: 5px; 
+    font-weight: bold; 
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;  
+    gap: 20px;  
+}
+

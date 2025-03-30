@@ -33,19 +33,36 @@
         <button type="submit">Enregistrer</button>
         
     </form>
+    <div class="main-container">
+        <div class="subtask-container" id="subtaskSection">
+            <h2>Sous-tâches</h2>
+            <ul id="subtaskList"></ul>
+        
+            <h3>Ajouter une sous-tâche</h3>
+            <form id="addSubtaskForm">
+                <input type="text" id="subtaskTitre" placeholder="Titre de la sous-tâche" required>
+                <input type="datetime-local" id="subtaskEcheance">
+                <select id="subtaskStatut">
+                    <option value="à faire">À faire</option>
+                    <option value="en cours">En cours</option>
+                    <option value="terminée">Terminée</option>
+                </select>
+                <button class ="btn-ajouter"  type="submit">Ajouter Sous-tâche</button>
+            </form>
+        </div>
 
-    <div id="commentSection">
-        <h2>Commentaires</h2>
-        <div id="commentList"></div>
+        <div id="commentSection">
+            <h2>Commentaires</h2>
+            <div id="commentList"></div>
 
-        <h3>Ajouter un Commentaire</h3>
-        <form id="addCommentForm">
-            <input type="text" id="commentAuteur" placeholder="Votre nom" required>
-            <textarea id="commentContent" placeholder="Votre commentaire" required></textarea>
-            <button type="submit">Ajouter le Commentaire</button>
-        </form>
+            <h3>Ajouter un Commentaire</h3>
+            <form id="addCommentForm">
+                <input type="text" id="commentAuteur" placeholder="Votre nom" required>
+                <textarea id="commentContent" placeholder="Votre commentaire" required></textarea>
+                <button class ="btn-ajouter" type="submit">Ajouter le Commentaire</button>
+            </form>
+        </div>
     </div>
-
     <script src="js/modification.js"></script>
 </body>
 </html>

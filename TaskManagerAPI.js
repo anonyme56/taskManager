@@ -21,11 +21,12 @@ app.get('/modify/:id', async (req, res) => {
 });
 
 // Connexion à MongoDB
-mongoose.connect('mongodb://localhost:27017/taskmanager')
+mongoose.connect('mongodb://localhost:27017/taskmanager')  // à modifier 
   .then(() => console.log('MongoDB connecté'))
   .catch(err => console.error(err));
 
-// Définition du modèle de données
+
+  // Définition du modèle de données
 const TacheSchema = new mongoose.Schema({
     titre: { type: String, required: false },
     description: { type: String, required: false },
@@ -60,13 +61,45 @@ const TacheSchema = new mongoose.Schema({
 
 const Task = mongoose.model('Task', TacheSchema);
 
-// Route pour servir le fichier index.html
+
 
 
 // Routes API
 app.get('/tasks', async (req, res) => {
-    const tasks = await Task.find(req.query).sort(req.query.tri ? { [req.query.tri]: req.query.ordre === 'desc' ? -1 : 1 } : {});
-    res.json(tasks);
+    const { q, tri, ordre } = req.query;
+
+    let filter = {};
+
+    
+
+    // Recherche par titre ou description si 'q' est spécifié
+    if (q) {
+        filter.$or = [
+            { titre: { $regex: q, $options: 'i' } },
+            { description: { $regex: q, $options: 'i' } },
+            { etiquettes: { $in: [new RegExp(q, 'i')] } },
+            { nom: { $regex: q, $options: 'i' } },
+            { prenom: { $regex: q, $options: 'i' } },
+            { statut: { $regex: q, $options: 'i' } },
+            { priorite: { $regex: q, $options: 'i' } },
+
+        ];
+    }
+
+    try {
+        let tasks = await Task.find(filter);
+
+        // Appliquer le tri si spécifié
+        if (tri) {
+            let sortOptions = {};
+            sortOptions[tri] = ordre === 'desc' ? -1 : 1; // Décroissant ou croissant
+            tasks = await Task.find(filter).sort(sortOptions); // Appliquer le tri
+        }
+
+        res.json(tasks);
+    } catch (error) {
+        res.status(500).json({ error: "Erreur lors de la récupération des tâches" });
+    }
 });
 
 app.get('/tasks/:id', async (req, res) => {
@@ -133,6 +166,81 @@ app.delete('/tasks/:taskId/comments/:commentId', async (req, res) => {
         res.status(500).json({ error: "Erreur lors de la suppression du commentaire" });
     }
 });
+
+app.post('/tasks/:id/subtasks', async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.id);
+        if (!task) return res.status(404).json({ message: "Tâche non trouvée" });
+
+        task.sousTaches.push(req.body);
+        await task.save();
+
+        res.status(201).json(task);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.delete('/tasks/:id/subtasks/:index', async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.id);
+        if (!task) return res.status(404).json({ message: "Tâche non trouvée" });
+
+        task.sousTaches.splice(req.params.index, 1);
+        await task.save();
+
+        res.status(200).json(task);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.get('/tasks', async (req, res) => {
+    const { statut, priorite, categorie, etiquettes, avant, apres, q, tri, ordre } = req.query;
+
+    let filter = {};
+
+    if (statut) {
+        filter.statut = statut;
+    }
+    if (priorite) {
+        filter.priorite = priorite;
+    }
+    if (categorie) {
+        filter.categorie = categorie;
+    }
+    if (etiquettes) {
+        filter.etiquettes = { $in: etiquettes.split(',') };  // Recherche par étiquette
+    }
+    if (avant) {
+        filter.echeance = { $lte: new Date(avant) };  // Filtrage des tâches avant une date
+    }
+    if (apres) {
+        filter.echeance = { $gte: new Date(apres) };  // Filtrage des tâches après une date
+    }
+    if (q) {
+        filter.$or = [
+            { titre: { $regex: q, $options: 'i' } },
+            { description: { $regex: q, $options: 'i' } }
+        ];
+    }
+
+    try {
+        let tasks = await Task.find(filter);
+
+        // Appliquer le tri si spécifié
+        if (tri) {
+            let sortOptions = {};
+            sortOptions[tri] = ordre === 'desc' ? -1 : 1; // Décroissant ou croissant
+            tasks = await Task.find(filter).sort(sortOptions); // Appliquer le tri
+        }
+
+        res.json(tasks);
+    } catch (error) {
+        res.status(500).json({ error: "Erreur lors de la récupération des tâches" });
+    }
+});
+
 
 
 // Lancer le serveur
