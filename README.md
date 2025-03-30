@@ -2,11 +2,6 @@
 
 
 
-# Installation a effectuer 
-
-
-
-
 
 ## Description
 Cette application est une API REST pour la gestion des tâches. Elle permet de créer, modifier, supprimer et filtrer des tâches en utilisant une base de données MongoDB.
