@@ -56,14 +56,14 @@ async function fetchTasks(queryString = '') {
             <div class="task">
                 <h3>${task.titre} &emsp; &emsp; (${task.etiquettes.join(', ')})</h3>
                 <p><strong>Nom: </strong> ${task.auteur.nom} &emsp; <strong>Prenom:</strong> ${task.auteur.prenom} &emsp; <strong>Email:</strong> ${task.auteur.email}</p>
-                <p>Créée le ${dateCreation}</p>
+                <p>Créé le ${dateCreation}</p>
                 <p>Echéance: ${dateEcheance}</p>
                 <p>Priorité: [${task.priorite}] &emsp; Statut: [${task.statut}]  &emsp; Categorie: [${task.categorie}] </p>
                 <p>Description:</p>
                 <textarea readonly>${task.description}</textarea>
                 <div class="task-buttons">
-                    <button onclick="deleteTask('${task._id}')">Supprimer</button>&emsp;
-                    <button onclick="window.location.href='modification.html?id=${task._id}'">Modifier</button>
+                    <button id="deleteButton" onclick="deleteTask('${task._id}')">Supprimer</button>&emsp;
+                    <button id="editButton" onclick="window.location.href='modification.html?id=${task._id}'">Modifier</button>
                 </div>
             </div>
         `;
